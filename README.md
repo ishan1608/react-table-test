@@ -2,8 +2,8 @@
 Testing [React Table](https://github.com/tannerlinsley/react-table/)
 
 During Development
-# install
-npm install
+## install
+`npm install`
 
-#start server
-npm run start
+## Start Server
+`npm run start`
