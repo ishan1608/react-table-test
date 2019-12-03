@@ -3,8 +3,6 @@ import {setConfig} from "react-hot-loader";
 import {hot} from "react-hot-loader/root";
 import ReactTable from "react-table";
 
-import {makeData} from "../utils";
-
 
 setConfig({
     pureRender: true, // RHL will not change render method
@@ -14,8 +12,19 @@ class ReactTableSimpleTableComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: makeData()
+            data: [], // No data initially
         };
+    }
+
+    componentDidMount() {
+        // Fetching data
+        fetch('https://jsonplaceholder.typicode.com/posts/')
+            .then(response => response.json())
+            .then(posts => {
+                this.setState({
+                    data: posts,
+                });
+            });
     }
 
     render() {
@@ -27,41 +36,22 @@ class ReactTableSimpleTableComponent extends React.Component {
                     data={this.state.data}
                     columns={[
                         {
-                            Header: "Name",
-                            columns: [
-                                {
-                                    Header: "First Name",
-                                    accessor: "firstName"
-                                },
-                                {
-                                    Header: "Last Name",
-                                    id: "lastName",
-                                    accessor: d => d.lastName
-                                }
-                            ]
+                            Header: "ID",
+                            accessor: "id",
+                            id: "id",
                         },
                         {
-                            Header: "Info",
-                            columns: [
-                                {
-                                    Header: "Age",
-                                    accessor: "age"
-                                },
-                                {
-                                    Header: "Status",
-                                    accessor: "status"
-                                }
-                            ]
+                            Header: "User ID",
+                            accessor: "userId"
                         },
                         {
-                            Header: 'Stats',
-                            columns: [
-                                {
-                                    Header: "Visits",
-                                    accessor: "visits"
-                                }
-                            ]
-                        }
+                            Header: "Title",
+                            accessor: 'title',
+                        },
+                        {
+                            Header: "Body",
+                            accessor: 'body',
+                        },
                     ]}
                     defaultPageSize={10}
                     className="-striped -highlight"
