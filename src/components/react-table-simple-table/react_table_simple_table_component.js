@@ -18,7 +18,7 @@ class ReactTableSimpleTableComponent extends React.Component {
 
     componentDidMount() {
         // Fetching data
-        fetch('http://localhost:3000/api/posts')
+        fetch('/api/data/posts')
             .then(response => response.json())
             .then(posts => {
                 this.setState({

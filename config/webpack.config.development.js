@@ -20,6 +20,12 @@ module.exports = merge(common, {
 		hot: true,  // Enable HMR
 		contentBase: APP_DIR,  // Content Base --> APP_DIR
 		historyApiFallback: true,
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000',
+				pathRewrite: {'^/api' : ''}
+			}
+		}
 	},
 
 	resolve: {
