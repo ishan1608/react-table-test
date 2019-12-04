@@ -4,7 +4,9 @@
 	"description": "Testing React Table",
 	"private": true,
 	"scripts": {
-		"start": "webpack-dev-server --config config/webpack.config.development.js --progress --open",
+		"start": "npm run api_server & npm run frontend",
+		"frontend": "webpack-dev-server --config config/webpack.config.development.js --progress --open",
+		"api_server": "node api_server/server.js",
 		"build": "webpack --config config/webpack.config.production.js -p"
 	},
 	"author": "Ishan <ishan1608@gmail.com>",
@@ -12,6 +14,7 @@
 	"dependencies": {
 		"bootstrap": "^4.2.1",
 		"jquery": "^3.3.1",
+		"json-server": "^0.15.1",
 		"namor": "^1.1.1",
 		"popper.js": "^1.14.6",
 		"react": "^16.8.4",
