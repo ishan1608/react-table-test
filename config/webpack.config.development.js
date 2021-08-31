@@ -25,7 +25,9 @@ module.exports = merge(common, {
 				target: 'http://localhost:3000',
 				pathRewrite: {'^/api' : ''}
 			}
-		}
+		},
+		// disableHostCheck: true, // NOTE: This is an insecure way as it allows all hosts, use 'public' property instead
+		public: 'ishanatmuz.pagekite.me'
 	},
 
 	resolve: {
